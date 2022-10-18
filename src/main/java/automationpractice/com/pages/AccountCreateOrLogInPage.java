@@ -68,7 +68,7 @@ public class AccountCreateOrLogInPage {
 
     public String getInvalidSignInAlert() {
         WebElement invSignIn = new WebDriverWait(webDriver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/ol[1]/li[1]")));
+                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert.alert-danger")));
         return invSignIn.getText();
     }
 

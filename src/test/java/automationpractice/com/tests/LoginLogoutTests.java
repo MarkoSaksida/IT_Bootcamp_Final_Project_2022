@@ -58,7 +58,8 @@ public class LoginLogoutTests {
         accountCreateOrLogInPage.setSignInPasswordField(password);
         accountCreateOrLogInPage.clickSignInButton();
         Assert.assertEquals(accountCreateOrLogInPage.getInvalidSignInAlert(),
-                "An email address required.");
+                "There is 1 error\n" +
+                        "An email address required.");
 
     }
 
@@ -69,7 +70,8 @@ public class LoginLogoutTests {
         accountCreateOrLogInPage.setSignInPasswordField("123456");
         accountCreateOrLogInPage.clickSignInButton();
         Assert.assertEquals(accountCreateOrLogInPage.getInvalidSignInAlert(),
-                "Invalid email address.");
+                "There is 1 error\n" +
+                        "Invalid email address.");
 
     }
 
@@ -80,7 +82,8 @@ public class LoginLogoutTests {
         accountCreateOrLogInPage.setSignInPasswordField("123456");
         accountCreateOrLogInPage.clickSignInButton();
         Assert.assertEquals(accountCreateOrLogInPage.getInvalidSignInAlert(),
-                "Authentication failed.");
+                "There is 1 error\n" +
+                        "Authentication failed.");
 
     }
 

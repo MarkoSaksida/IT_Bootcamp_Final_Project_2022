@@ -1,9 +1,9 @@
 package automationpractice.com.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -11,9 +11,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class FadedTShirtProductPage {
+public class ProductPage {
 
-    public FadedTShirtProductPage(WebDriver webDriver) {
+    public ProductPage(WebDriver webDriver) {
         this.webDriver = webDriver;
         PageFactory.initElements(this.webDriver, this);
     }
@@ -32,17 +32,17 @@ public class FadedTShirtProductPage {
     @FindBy(id = "color_14")
     private WebElement blueFadedTShirtBtn;
 
-    @FindBy(xpath = "//span[contains(text(),'Add to cart')]")
+    @FindBys({@FindBy(id = "add_to_cart"), @FindBy(className = "exclusive")})
     private WebElement addFadedTShirtToCart;
 
-    @FindBy(xpath = "//*[@id=\"center_column\"]/p[2]/a[1]/span")
-    private WebElement proceedToCheckoutBtn;
+    @FindBy(css = ".btn.btn-default.button.button-medium")
+    private WebElement proceedToCheckoutButton;
 
-    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/header[1]/div[3]/div[1]/div[1]/div[4]/div[1]/div[2]/div[4]/span[1]/span[1]")
-    private WebElement continueShopping;
+    @FindBy(css = ".continue.btn.btn-default.button.exclusive-medium")
+    private WebElement continueShoppingButton;
 
-    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/header[1]/div[3]/div[1]/div[1]/div[3]/div[1]/a[1]")
-    private WebElement shopingCartBtn;
+    @FindBys({@FindBy(className = "shopping_cart"), @FindBy(tagName = "a")})
+    private WebElement shoppingCartBtn;
 
     public void setQuantityField(String quantity) {
         this.selectQuantityField.clear();
@@ -67,18 +67,18 @@ public class FadedTShirtProductPage {
     }
 
     public void clickContinueShopping() {
-        WebElement continueShopping = new WebDriverWait(webDriver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html[1]/body[1]/div[1]/div[1]/header[1]/div[3]/div[1]/div[1]/div[4]/div[1]/div[2]/div[4]/span[1]/span[1]")));
-        continueShopping.click();
+        WebElement continueShopping = new WebDriverWait(webDriver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.visibilityOf(this.continueShoppingButton));
+        continueShoppingButton.click();
     }
 
     public void clickProceedToCheckoutBtn() {
-        WebElement proceedToCheckout = new WebDriverWait(webDriver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html[1]/body[1]/div[1]/div[1]/header[1]/div[3]/div[1]/div[1]/div[4]/div[1]/div[2]/div[4]/a[1]/span[1]")));
-        proceedToCheckout.click();
+        WebElement proceedToCheckout = new WebDriverWait(webDriver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.visibilityOf(this.proceedToCheckoutButton));
+        proceedToCheckoutButton.click();
     }
 
     public void clickOnCartButton() {
-        this.shopingCartBtn.click();
+        this.shoppingCartBtn.click();
     }
 }
