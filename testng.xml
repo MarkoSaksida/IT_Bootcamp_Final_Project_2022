@@ -1,0 +1,40 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="automationpractice.com">
+
+    <test name="automationpractice.com" parallel="false" preserve-order="true">
+        <classes>
+            <class name="automationpractice.com.tests.CreateAccountTests">
+                <methods>
+                    <include name="createAccountWithInvalidDataInCreateAccountEmailField_expectFailToStartCreatingAccount" />
+                    <include name="createAccountWithExistingAccountEmail_expectAlertThatTheAccountAlreadyExists" />
+                    <include name="createAccountWithValidData_expectCreatingValidAccount" />
+                </methods>
+            </class>
+            <class name="automationpractice.com.tests.LoginLogoutTests">
+                <methods>
+                    <include name="signIntoAccountMissingTheValueInEmailField_expectAuthenticationFail" />
+                    <include name="signIntoAccountWithInvalidDataInEmailField_expectAuthenticationFail" />
+                    <include name="signIntoAccountWithValidEmailInvalidPassword_expectAuthenticationFail" />
+                    <include name="signInAndSignOutWithValidCredentials_expectSuccessfulAuthenticationAndSignOut" />
+                    <include name="retrieveForgottenPassword_expectSuccessfullySentConfirmationEmail" />
+                </methods>
+            </class>
+            <class name="automationpractice.com.tests.ShopWorkflowTests">
+                <methods>
+                    <include name="searchForClothingItem_expectedReturnSearchResults" />
+                    <include name="addOrangeAndBlueTShirtToShoppingCartAndContinueShopping_expectedShoppingContinuesItemsAddedToShoppingCart" />
+                    <include name="addOrangeTShirtToShoppingCartAndRemoveIt_expectedShoppingCartEmpty" />
+                    <include name="shopForOrangeTShirt_expectedSuccessfulCheckout" />
+                </methods>
+            </class>
+            <class name="automationpractice.com.tests.SocialMediaNewsletterAndContactUsTests">
+                <methods>
+                    <include name="socialMediaLinks_expectedAllLinksLeadToTheirSocialMediaPages" />
+                    <include name="subscribingToNewsLetter_expectedSuccessfulSubscriptionToNewsletter" />
+                    <include name="fillingOutContactUsForm_expectedMessageSuccessfullySent" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
