@@ -49,7 +49,7 @@ public class SocialMediaNewsletterAndContactUsTests {
     @Test(dataProvider = "socialMediaLinks")
     public void socialMediaLinks_expectedAllLinksLeadToTheirSocialMediaPages(String socialMedia, String expectedUrl) {
         homePage.clickSocialMediaButton(socialMedia);
-        Assert.assertEquals(webDriver.getCurrentUrl(),expectedUrl, "page does not exist");
+        Assert.assertTrue(webDriver.getCurrentUrl().contains(expectedUrl));
     }
 
     @Test
