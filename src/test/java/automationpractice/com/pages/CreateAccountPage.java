@@ -4,7 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class CreateAccountPage {
 
@@ -14,6 +18,9 @@ public class CreateAccountPage {
         this.webDriver = webDriver;
         PageFactory.initElements(this.webDriver, this);
     }
+
+    @FindBy(className = "account_creation")
+    private WebElement accountCreationForm;
 
     @FindBy(id = "id_gender1")
     private WebElement customerTitleMr;
@@ -91,6 +98,8 @@ public class CreateAccountPage {
     private WebElement registerBtn;
 
     public void clickTitleRadioBtn(String title) {
+        WebDriverWait waitForAccountCreationForm = new WebDriverWait(webDriver,Duration.ofSeconds(5));
+        waitForAccountCreationForm.until(ExpectedConditions.visibilityOf(accountCreationForm));
         if (title.equalsIgnoreCase("mr")) {
             this.customerTitleMr.click();
         } else if (title.equalsIgnoreCase("ms")) {
