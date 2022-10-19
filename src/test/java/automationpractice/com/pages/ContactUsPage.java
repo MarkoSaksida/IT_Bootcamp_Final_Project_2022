@@ -3,6 +3,7 @@ package automationpractice.com.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
@@ -30,7 +31,7 @@ public class ContactUsPage {
     @FindBy (id = "submitMessage")
     private WebElement sendBtn;
 
-    @FindBy (xpath = "//p[@class='alert alert-success']")
+    @FindBy(css = ".alert.alert-success")
     private WebElement messageSentSuccessfully;
 
     public void setSubjectHeadingDropdown(String heading) {

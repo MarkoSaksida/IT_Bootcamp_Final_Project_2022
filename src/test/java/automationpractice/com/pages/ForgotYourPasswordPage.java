@@ -3,6 +3,7 @@ package automationpractice.com.pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
 public class ForgotYourPasswordPage {
@@ -17,10 +18,10 @@ public class ForgotYourPasswordPage {
     @FindBy(id = "email")
     private WebElement inputEmailField;
 
-    @FindBy (xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/form[1]/fieldset[1]/p[1]/button[1]/span[1]")
+    @FindBys ({@FindBy(className = "submit"), @FindBy(css = ".btn.btn-default.button.button-medium")})
     private WebElement retrievePasswordBtn;
 
-    @FindBy (xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[1]/p[1]")
+    @FindBy(css = ".alert.alert-success")
     private WebElement confirmationMailAlert;
 
     public void inputEmailToRetrievePassword(String email) {

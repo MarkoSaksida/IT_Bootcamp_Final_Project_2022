@@ -29,7 +29,7 @@ public class Cart {
     @FindBy(xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[2]/table[1]/tbody[1]/tr[1]/td[5]/input[2]")
     private WebElement quantityField;
 
-    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/div[2]/table[1]/tbody[1]/tr[1]/td[7]/div[1]/a[1]/i[1]")
+    @FindBy(className = "icon-trash")
     private WebElement emptyCartBtn;
 
     @FindBy(xpath = "//*[@id=\"center_column\"]/p[2]/a[1]/span")
