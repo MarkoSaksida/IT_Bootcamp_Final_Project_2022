@@ -32,11 +32,15 @@ public class Cart {
     @FindBy(className = "icon-trash")
     private WebElement emptyCartBtn;
 
-    @FindBy(xpath = "//*[@id=\"center_column\"]/p[2]/a[1]/span")
+
+    @FindBy(css = ".button.btn.btn-default.standard-checkout.button-medium")
     private WebElement proceedToCheckoutBtn;
 
-    @FindBy(xpath = "//button[@type=\"submit\"]/span[contains(text(), \"Proceed to checkout\")]")
+    @FindBy(name = "processAddress")
     private WebElement proceedToCheckoutBtn2;
+
+    @FindBy(name="processCarrier")
+    private WebElement proceedToCheckoutBtn3;
 
     @FindBy(id = "cgv")
     private WebElement agreeToTermsCheckbox;
@@ -69,6 +73,10 @@ public class Cart {
 
     public void clickProceedToCheckoutBtn2() {
         this.proceedToCheckoutBtn2.click();
+    }
+
+    public void clickProceedToCheckoutBtn3() {
+        this.proceedToCheckoutBtn3.click();
     }
 
     public void checkAgreeToTermsCheckbox() {

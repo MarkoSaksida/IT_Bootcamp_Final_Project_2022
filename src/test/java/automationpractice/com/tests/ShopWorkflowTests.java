@@ -120,7 +120,7 @@ public class ShopWorkflowTests {
         cart.clickProceedToCheckout();
         cart.clickProceedToCheckoutBtn2();
         cart.checkAgreeToTermsCheckbox();
-        cart.clickProceedToCheckoutBtn2();
+        cart.clickProceedToCheckoutBtn3();
         cart.clickPayBy(paymentMethod);
         cart.clickIConfirmMyOrder();
         Assert.assertEquals(webDriver.getTitle(), "Order confirmation - My Store");
