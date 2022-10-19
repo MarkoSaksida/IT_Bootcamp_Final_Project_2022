@@ -23,7 +23,6 @@ public class CreateAccountTests {
     private HomePage homePage;
     private AccountCreateOrLogInPage accountCreateOrLogInPage;
     private CreateAccountPage createAccountPage;
-
     private MyAccountPage myAccountPage;
 
 
