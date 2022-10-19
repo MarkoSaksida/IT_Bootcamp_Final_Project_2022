@@ -97,9 +97,13 @@ public class CreateAccountPage {
     @FindBy(id = "submitAccount")
     private WebElement registerBtn;
 
-    public void clickTitleRadioBtn(String title) {
-        WebDriverWait waitForAccountCreationForm = new WebDriverWait(webDriver,Duration.ofSeconds(5));
+    public void getAccountCreationForm() {
+        WebDriverWait waitForAccountCreationForm = new WebDriverWait(webDriver,Duration.ofSeconds(10));
         waitForAccountCreationForm.until(ExpectedConditions.visibilityOf(accountCreationForm));
+    }
+
+
+    public void clickTitleRadioBtn(String title) {
         if (title.equalsIgnoreCase("mr")) {
             this.customerTitleMr.click();
         } else if (title.equalsIgnoreCase("ms")) {

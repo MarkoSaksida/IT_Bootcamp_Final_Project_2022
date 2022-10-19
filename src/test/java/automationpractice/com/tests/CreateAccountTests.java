@@ -89,6 +89,7 @@ public class CreateAccountTests {
         homePage.clickSignInBtn();
         accountCreateOrLogInPage.setSignUpEmailField(Faker.instance().bothify("?????###@mail.de"));
         accountCreateOrLogInPage.clickCreateAnAccountBtn();
+        createAccountPage.getAccountCreationForm();
         createAccountPage.clickTitleRadioBtn(title);
         createAccountPage.setFirstNameField(Faker.instance().name().firstName());
         createAccountPage.setLastNameField(Faker.instance().name().lastName());
