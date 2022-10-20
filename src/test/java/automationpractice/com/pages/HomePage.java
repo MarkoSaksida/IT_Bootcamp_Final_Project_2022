@@ -1,12 +1,15 @@
 package automationpractice.com.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomePage {
 
@@ -17,7 +20,7 @@ public class HomePage {
         PageFactory.initElements(this.webDriver, this);
     }
 
-    @FindBy(xpath = "//a[contains(text(), \"Sign in\")]")
+    @FindBy(className = "login")
     private WebElement signInBtn;
 
     @FindBy(id = "header_logo")
@@ -29,32 +32,28 @@ public class HomePage {
     @FindBy (id = "search_query_top")
     private WebElement searchQueryField;
 
-    @FindBy (xpath = "/html[1]/body[1]/div[1]/div[1]/header[1]/div[3]/div[1]/div[1]/div[2]/form[1]/button[1]")
-    private WebElement searchQueryBtn;
+    @FindBy (name = "submit_search")
+    private WebElement searchQueryButton;
 
-    @FindBy (xpath = "//div[@id='contact-link']//a[contains(text(),'Contact us')]")
-    private WebElement contactUsField;
-
-    @FindBy (xpath = "//li[@class='facebook']")
+    @FindBy (className = "facebook")
     private WebElement facebookBtn;
 
-    @FindBy (xpath = "//li[@class='twitter']")
+    @FindBy (className = "twitter")
     private WebElement twitterBtn;
 
-    @FindBy (xpath = "//li[@class='youtube']")
+    @FindBy (xpath = "youtube")
     private WebElement youtubeBtn;
-
-    @FindBy (xpath = "//li[@class='google-plus']")
-    private WebElement googlePlusBtn;
 
     @FindBy (id = "newsletter-input")
     private WebElement newsletterInputField;
 
-    @FindBy (xpath = "//p[@class='alert alert-success']")
+    @FindBy (css = ".alert.alert-success")
     private WebElement newsletterSubscriptionSuccessAlert;
 
     @FindBy(id = "contact-link")
     private WebElement contactUsButton;
+
+
 
     public void clickSignInBtn() {
         this.signInBtn.click();
@@ -73,7 +72,7 @@ public class HomePage {
     }
 
     public void clickSearchQueryBtn() {
-        this.searchQueryBtn.click();
+        this.searchQueryButton.click();
     }
 
     public void clickSocialMediaButton(String socialMedia) {
