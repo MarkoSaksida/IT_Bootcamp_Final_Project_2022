@@ -45,13 +45,13 @@ public class Cart {
     @FindBy(id = "cgv")
     private WebElement agreeToTermsCheckbox;
 
-    @FindBy(xpath = "//a[@title=\"Pay by bank wire\"]")
+    @FindBy(className = "bankwire")
     private WebElement payByBankWire;
 
-    @FindBy(xpath = "//a[@title=\"Pay by check.\"]")
+    @FindBy(className = "cheque")
     private WebElement payByCheck;
 
-    @FindBy(xpath = "//button[@type=\"submit\"]/span[contains(text(), \"I confirm my order\")]")
+    @FindBy(css = ".button.btn.btn-default.button-medium")
     private WebElement iConfirmMyOrder;
 
     public String getSrcAttributeOrangeTShirt() {
