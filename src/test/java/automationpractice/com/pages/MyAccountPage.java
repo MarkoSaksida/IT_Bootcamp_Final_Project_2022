@@ -24,7 +24,7 @@ public class MyAccountPage {
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@class='info-account']")));
         return successfulSignupAlert.getText();
     }
-    @FindBy(xpath = "//a[@title=\"Log me out\"]")
+    @FindBy(className = "logout")
     private WebElement signOutBtn;
 
     public void clickSignOutButton() {
