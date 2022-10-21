@@ -40,14 +40,17 @@ public class ContactUsPage {
     }
 
     public void setEmailAddress(String email) {
+        this.emailAddress.clear();
         this.emailAddress.sendKeys(email);
     }
 
     public void setOrderReference(String order) {
+        this.orderId.clear();
         this.orderId.sendKeys(order);
     }
 
     public void setMessageField(String message) {
+        this.message.clear();
         this.message.sendKeys(message);
     }
 

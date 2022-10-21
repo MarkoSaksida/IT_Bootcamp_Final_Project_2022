@@ -25,6 +25,7 @@ public class ForgotYourPasswordPage {
     private WebElement confirmationMailAlert;
 
     public void inputEmailToRetrievePassword(String email) {
+        this.inputEmailField.clear();
         this.inputEmailField.sendKeys(email);
     }
 

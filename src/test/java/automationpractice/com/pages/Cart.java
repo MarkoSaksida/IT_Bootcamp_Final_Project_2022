@@ -102,7 +102,7 @@ public class Cart {
 
     public String getShoppingCartIsEmptyAlert() {
         WebElement shoppingCartEmptyAlert = new WebDriverWait(webDriver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html[1]/body[1]/div[1]/div[2]/div[1]/div[3]/div[1]/p[1]")));
+                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".alert.alert-warning")));
         return shoppingCartEmptyAlert.getText();
     }
 

@@ -92,6 +92,7 @@ public class HomePage {
     }
 
     public void setNewsletterField(String email) {
+        this.newsletterInputField.clear();
         this.newsletterInputField.sendKeys(email);
         this.newsletterInputField.sendKeys(Keys.ENTER);
     }

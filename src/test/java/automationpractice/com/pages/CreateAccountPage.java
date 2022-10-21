@@ -112,10 +112,12 @@ public class CreateAccountPage {
     }
 
     public void setFirstNameField(String firstName) {
+        this.customerFirstName.clear();
         this.customerFirstName.sendKeys(firstName);
     }
 
     public void setLastNameField(String lastName) {
+        this.customerLastName.clear();
         this.customerLastName.sendKeys(lastName);
     }
 
@@ -124,6 +126,7 @@ public class CreateAccountPage {
     }
 
     public void setPasswordField(String password) {
+        this.customerPassword.clear();
         this.customerPassword.sendKeys(password);
     }
 
@@ -151,18 +154,22 @@ public class CreateAccountPage {
     }
 
     public void setCompanyField(String company) {
+        this.customerCompany.clear();
         this.customerCompany.sendKeys(company);
     }
 
     public void setAddressField(String address) {
+        this.customerAddress.clear();
         this.customerAddress.sendKeys(address);
     }
 
     public void setAddressLine2Field(String addressLine2) {
+        this.customerAddressLine2.clear();
         this.customerAddressLine2.sendKeys(addressLine2);
     }
 
     public void setCityField(String city) {
+        this.customerCity.clear();
         this.customerCity.sendKeys(city);
     }
 
@@ -172,6 +179,7 @@ public class CreateAccountPage {
     }
 
     public void setPostalCodeField(int postalCode) {
+        this.customerPostalCode.clear();
         this.customerPostalCode.sendKeys(String.valueOf(postalCode));
     }
 
@@ -181,14 +189,17 @@ public class CreateAccountPage {
     }
 
     public void setAdditionalInformationField(String additionalInfo) {
+        this.customerAdditionalInfo.clear();
         this.customerAdditionalInfo.sendKeys(additionalInfo);
     }
 
     public void setHomePhoneField(String homePhone) {
+        this.customerHomePhone.clear();
         this.customerHomePhone.sendKeys(homePhone);
     }
 
     public void setMobilePhoneField(String mobilePhone) {
+        this.customerMobilePhone.clear();
         this.customerMobilePhone.sendKeys(mobilePhone);
     }
 

@@ -55,10 +55,12 @@ public class AccountCreateOrLogInPage {
     }
 
     public void setSignInEmailAddressField(String email) {
+        this.signInEmail.clear();
         this.signInEmail.sendKeys(email);
     }
 
     public void setSignInPasswordField(String password) {
+        this.signInPassword.clear();
         this.signInPassword.sendKeys(password);
     }
 
