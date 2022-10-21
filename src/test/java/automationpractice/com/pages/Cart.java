@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -51,7 +52,7 @@ public class Cart {
     @FindBy(className = "cheque")
     private WebElement payByCheck;
 
-    @FindBy(css = ".button.btn.btn-default.button-medium")
+    @FindBy(xpath = "//button[@type=\"submit\"]/span[contains(text(), \"I confirm my order\")]")
     private WebElement iConfirmMyOrder;
 
     public String getSrcAttributeOrangeTShirt() {
