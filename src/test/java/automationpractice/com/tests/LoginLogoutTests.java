@@ -1,5 +1,6 @@
 package automationpractice.com.tests;
 
+import automationpractice.com.helpers.DataProviders;
 import automationpractice.com.pages.AccountCreateOrLogInPage;
 import automationpractice.com.pages.ForgotYourPasswordPage;
 import automationpractice.com.pages.HomePage;
@@ -43,15 +44,7 @@ public class LoginLogoutTests {
         webDriver.quit();
     }
 
-    @DataProvider(name = "incompleteCredentialsForSignIn")
-    public Object[][] incompleteCredentialsForSignIn() {
-        return new Object[][] {
-                { "", ""},
-                { "", "123456"},
-        };
-    }
-
-    @Test(dataProvider = "incompleteCredentialsForSignIn")
+    @Test(dataProvider = "incompleteCredentialsForSignIn", dataProviderClass = DataProviders.class)
     public void signIntoAccountMissingTheValueInEmailField_expectAuthenticationFail (String email, String password) {
         homePage.clickSignInBtn();
         accountCreateOrLogInPage.setSignInEmailAddressField(email);

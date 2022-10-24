@@ -1,5 +1,6 @@
 package automationpractice.com.tests;
 
+import automationpractice.com.helpers.DataProviders;
 import automationpractice.com.pages.ContactUsPage;
 import automationpractice.com.pages.HomePage;
 import com.github.javafaker.Faker;
@@ -9,7 +10,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -37,16 +37,7 @@ public class SocialMediaNewsletterAndContactUsTests {
         webDriver.quit();
     }
 
-    @DataProvider(name = "socialMediaLinks")
-    public Object[][] socialMediaLinks() {
-        return new Object[][] {
-                {"facebook", "https://www.facebook.com/groups/525066904174158/"},
-                {"twitter", "https://twitter.com/seleniumfrmwrk"},
-                {"youtube", "https://www.youtube.com/channel/UCHl59sI3SRjQ-qPcTrgt0tA"},
-        };
-    }
-
-    @Test(dataProvider = "socialMediaLinks")
+    @Test(dataProvider = "socialMediaLinks", dataProviderClass = DataProviders.class)
     public void socialMediaLinks_expectedAllLinksLeadToTheirSocialMediaPages(String socialMedia, String expectedUrl) {
         homePage.clickSocialMediaButton(socialMedia);
         Assert.assertTrue(webDriver.getCurrentUrl().contains(expectedUrl));
@@ -59,14 +50,7 @@ public class SocialMediaNewsletterAndContactUsTests {
                 "Newsletter : You have successfully subscribed to this newsletter.");
     }
 
-    @DataProvider(name = "dataForContactUsForm")
-    public Object[][] dataForContactUsForm() {
-        return new Object[][] {
-                {"Customer service", "My dress arrived all torn, with blue stains."},
-                {"Webmaster", "Your dress section is down, and I need one ASAP."},
-        };
-    }
-    @Test (dataProvider = "dataForContactUsForm")
+    @Test (dataProvider = "dataForContactUsForm", dataProviderClass = DataProviders.class)
     public void fillingOutContactUsForm_expectedMessageSuccessfullySent(String heading, String message) {
         homePage.clickContactUsButton();
         contactUsPage.setEmailAddress(Faker.instance().bothify("?????###@mail.de"));

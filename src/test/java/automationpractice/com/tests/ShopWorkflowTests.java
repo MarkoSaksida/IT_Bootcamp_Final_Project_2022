@@ -1,5 +1,6 @@
 package automationpractice.com.tests;
 
+import automationpractice.com.helpers.DataProviders;
 import automationpractice.com.pages.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -92,14 +92,8 @@ public class ShopWorkflowTests {
         cart.clickRemoveAllFromCart();
         Assert.assertEquals(cart.getShoppingCartIsEmptyAlert(), "Your shopping cart is empty.");
     }
-    @DataProvider(name = "paymentMethod")
-    public Object[][] paymentMethod() {
-        return new Object[][] {
-                { "bank wire"},
-                { "check"},
-        };
-    }
-    @Test(dataProvider = "paymentMethod")
+
+    @Test(dataProvider = "paymentMethod", dataProviderClass = DataProviders.class)
     public void shopForOrangeTShirt_expectedSuccessfulCheckout(String paymentMethod) {
         homePage.clickSignInBtn();
         accountCreateOrLogInPage.setSignInEmailAddressField("tester@tester.rs");
