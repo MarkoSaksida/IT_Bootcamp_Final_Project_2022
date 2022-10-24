@@ -26,8 +26,8 @@ public class HomePage {
     @FindBy(id = "header_logo")
     private WebElement yourLogoHomeButton;
 
-    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[1]/header[1]/div[3]/div[1]/div[1]/div[6]/ul[1]/li[3]/a[1]")
-    private WebElement tShirtsBtn;
+    @FindBy(tagName = "li")
+    private List<WebElement> navigationButtons;
 
     @FindBy (id = "search_query_top")
     private WebElement searchQueryField;
@@ -64,7 +64,11 @@ public class HomePage {
     }
 
     public void clickTShirtsBtn() {
-        this.tShirtsBtn.click();
+        for (int i = 0; i < navigationButtons.size(); i++) {
+            if (navigationButtons.get(i).getText().equalsIgnoreCase("T-shirts")) {
+                navigationButtons.get(i).click();
+            }
+        }
     }
 
     public void setSearchQueryField(String item) {
