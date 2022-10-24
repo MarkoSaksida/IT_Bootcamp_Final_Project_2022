@@ -30,7 +30,7 @@ public class HomePage {
     @FindBy (id = "search_query_top")
     private WebElement searchQueryField;
 
-    @FindBy (tagName = "submit_search")
+    @FindBy (name = "submit_search")
     private WebElement searchQueryButton;
 
     @FindBy (className = "facebook")
