@@ -40,10 +40,10 @@ public class ShopWorkflowTests {
 
     }
 
-    @AfterMethod
-    public void quitWebDriver() {
-        webDriver.quit();
-    }
+//    @AfterMethod
+//    public void quitWebDriver() {
+//        webDriver.quit();
+//    }
 
     @Test
     public void searchForClothingItem_expectedReturnSearchResults() {
