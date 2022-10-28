@@ -1,18 +1,15 @@
 package automationpractice.com.pages;
 
-import org.openqa.selenium.WebDriver;
+import automationpractice.com.base.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class ContactUsPage {
+public class ContactUsPage extends BaseTest {
 
-    private WebDriver webDriver;
-
-    public ContactUsPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
-        PageFactory.initElements(this.webDriver, this);
+    public ContactUsPage() {
+        PageFactory.initElements(webDriver, this);
     }
 
     @FindBy(id = "id_contact")

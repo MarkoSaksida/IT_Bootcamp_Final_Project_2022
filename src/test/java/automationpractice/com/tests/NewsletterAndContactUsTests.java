@@ -1,56 +1,38 @@
 package automationpractice.com.tests;
 
+import automationpractice.com.base.BaseTest;
 import automationpractice.com.helpers.DataProviders;
 import automationpractice.com.pages.ContactUsPage;
 import automationpractice.com.pages.HomePage;
 import com.github.javafaker.Faker;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
-import java.time.Duration;
 
-public class SocialMediaNewsletterAndContactUsTests {
-
-    private WebDriver webDriver;
+public class NewsletterAndContactUsTests extends BaseTest {
     private HomePage homePage;
     private ContactUsPage contactUsPage;
 
-
     @BeforeMethod
-    public void configure() {
-        WebDriverManager.chromedriver().setup();
-        webDriver = new ChromeDriver();
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
-        homePage = new HomePage(webDriver);
-        contactUsPage = new ContactUsPage(webDriver);
-        webDriver.get("http://automationpractice.com/index.php");
-        webDriver.manage().window().maximize();
+    public void configure(){
+        homePage = new HomePage();
+        contactUsPage = new ContactUsPage();
     }
 
     @AfterMethod
-    public void quitWebDriver() {
-        webDriver.quit();
+    public void pageCleanup() {
+        webDriver.manage().deleteAllCookies();
     }
 
-    @Test(dataProvider = "socialMediaLinks", dataProviderClass = DataProviders.class)
-    public void socialMediaLinks_expectedAllLinksLeadToTheirSocialMediaPages(String socialMedia, String expectedUrl) {
-        homePage.clickSocialMediaButton(socialMedia);
-        Assert.assertTrue(webDriver.getCurrentUrl().contains(expectedUrl));
-    }
-
-    @Test
+    @Test (priority = 10)
     public void subscribingToNewsLetter_expectedSuccessfulSubscriptionToNewsletter() {
         homePage.setNewsletterField(Faker.instance().bothify("?????###@mail.de"));
         Assert.assertEquals(homePage.getNewsletterSubscriptionSuccessField(),
                 "Newsletter : You have successfully subscribed to this newsletter.");
     }
 
-    @Test (dataProvider = "dataForContactUsForm", dataProviderClass = DataProviders.class)
+
+    @Test (priority = 20, dataProvider = "dataForContactUsForm", dataProviderClass = DataProviders.class)
     public void fillingOutContactUsForm_expectedMessageSuccessfullySent(String heading, String message) {
         homePage.clickContactUsButton();
         contactUsPage.setEmailAddress(Faker.instance().bothify("?????###@mail.de"));
@@ -61,6 +43,5 @@ public class SocialMediaNewsletterAndContactUsTests {
         Assert.assertEquals(contactUsPage.getMessageSentSuccessfullyAlert(),
                 "Your message has been successfully sent to our team.");
     }
-
 
 }

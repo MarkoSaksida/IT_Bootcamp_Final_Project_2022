@@ -1,7 +1,7 @@
 package automationpractice.com.pages;
 
+import automationpractice.com.base.BaseTest;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -9,13 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomePage {
+public class HomePage extends BaseTest {
 
-    private WebDriver webDriver;
-
-    public HomePage(WebDriver webDriver) {
-        this.webDriver = webDriver;
-        PageFactory.initElements(this.webDriver, this);
+    public HomePage() {
+        PageFactory.initElements(webDriver, this);
     }
 
     @FindBy(className = "login")

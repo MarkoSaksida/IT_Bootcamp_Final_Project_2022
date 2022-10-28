@@ -1,25 +1,17 @@
 package automationpractice.com.tests;
 
+import automationpractice.com.base.BaseTest;
 import automationpractice.com.helpers.DataProviders;
 import automationpractice.com.pages.AccountCreateOrLogInPage;
 import automationpractice.com.pages.ForgotYourPasswordPage;
 import automationpractice.com.pages.HomePage;
 import automationpractice.com.pages.MyAccountPage;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-
-public class LoginLogoutTests {
-
-
-    private WebDriver webDriver;
+public class LoginLogoutTests extends BaseTest {
     private HomePage homePage;
     private AccountCreateOrLogInPage accountCreateOrLogInPage;
     private MyAccountPage myAccountPage;
@@ -27,24 +19,19 @@ public class LoginLogoutTests {
 
     @BeforeMethod
     public void configure() {
-        WebDriverManager.chromedriver().setup();
-        webDriver = new ChromeDriver();
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
-        homePage = new HomePage(webDriver);
-        accountCreateOrLogInPage = new AccountCreateOrLogInPage(webDriver);
-        myAccountPage = new MyAccountPage(webDriver);
-        forgotYourPasswordPage = new ForgotYourPasswordPage(webDriver);
-        webDriver.get("http://automationpractice.com/index.php");
-        webDriver.manage().window().maximize();
+        homePage = new HomePage();
+        accountCreateOrLogInPage = new AccountCreateOrLogInPage();
+        myAccountPage = new MyAccountPage();
+        forgotYourPasswordPage = new ForgotYourPasswordPage();
 
     }
 
     @AfterMethod
-    public void quitWebDriver() {
-        webDriver.quit();
+    public void pageCleanup() {
+        webDriver.manage().deleteAllCookies();
     }
 
-    @Test(dataProvider = "incompleteCredentialsForSignIn", dataProviderClass = DataProviders.class)
+    @Test(priority = 10, dataProvider = "incompleteCredentialsForSignIn", dataProviderClass = DataProviders.class)
     public void signIntoAccountMissingTheValueInEmailField_expectAuthenticationFail (String email, String password) {
         homePage.clickSignInBtn();
         accountCreateOrLogInPage.setSignInEmailAddressField(email);
@@ -56,7 +43,7 @@ public class LoginLogoutTests {
 
     }
 
-    @Test
+    @Test (priority = 20)
     public void signIntoAccountWithInvalidDataInEmailField_expectAuthenticationFail() {
         homePage.clickSignInBtn();
         accountCreateOrLogInPage.setSignInEmailAddressField("bootcamp");
@@ -65,10 +52,9 @@ public class LoginLogoutTests {
         Assert.assertEquals(accountCreateOrLogInPage.getInvalidSignInAlert(),
                 "There is 1 error\n" +
                         "Invalid email address.");
-
     }
 
-    @Test
+    @Test (priority = 30)
     public void signIntoAccountWithValidEmailInvalidPassword_expectAuthenticationFail() {
         homePage.clickSignInBtn();
         accountCreateOrLogInPage.setSignInEmailAddressField("t@t.com");
@@ -77,10 +63,9 @@ public class LoginLogoutTests {
         Assert.assertEquals(accountCreateOrLogInPage.getInvalidSignInAlert(),
                 "There is 1 error\n" +
                         "Authentication failed.");
-
     }
 
-    @Test
+    @Test (priority = 30)
     public void signInAndSignOutWithValidCredentials_expectSuccessfulAuthenticationAndSignOut() {
         homePage.clickSignInBtn();
         accountCreateOrLogInPage.setSignInEmailAddressField("tester@tester.rs");
@@ -91,7 +76,7 @@ public class LoginLogoutTests {
         Assert.assertEquals(webDriver.getTitle(), "Login - My Store");
     }
 
-    @Test
+    @Test (priority = 40)
     public void retrieveForgottenPassword_expectSuccessfullySentConfirmationEmail() {
         homePage.clickSignInBtn();
         accountCreateOrLogInPage.clickOnForgottenPasswordBtn();

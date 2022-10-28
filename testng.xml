@@ -28,11 +28,15 @@
                     <include name="shopForOrangeTShirt_expectedSuccessfulCheckout" />
                 </methods>
             </class>
-            <class name="automationpractice.com.tests.SocialMediaNewsletterAndContactUsTests">
+            <class name="automationpractice.com.tests.NewsletterAndContactUsTests">
                 <methods>
-                    <include name="socialMediaLinks_expectedAllLinksLeadToTheirSocialMediaPages" />
                     <include name="subscribingToNewsLetter_expectedSuccessfulSubscriptionToNewsletter" />
                     <include name="fillingOutContactUsForm_expectedMessageSuccessfullySent" />
+                </methods>
+            </class>
+            <class name="automationpractice.com.tests.SocialMediaLinksTests">
+                <methods>
+                    <include name="socialMediaLinks_expectedAllLinksLeadToTheirSocialMediaPages" />
                 </methods>
             </class>
         </classes>

@@ -1,25 +1,19 @@
 package automationpractice.com.tests;
 
+import automationpractice.com.base.BaseTest;
 import automationpractice.com.helpers.DataProviders;
 import automationpractice.com.pages.AccountCreateOrLogInPage;
 import automationpractice.com.pages.CreateAccountPage;
 import automationpractice.com.pages.HomePage;
 import automationpractice.com.pages.MyAccountPage;
 import com.github.javafaker.Faker;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
+public class CreateAccountTests extends BaseTest {
 
-public class CreateAccountTests {
-
-
-    private WebDriver webDriver;
     private HomePage homePage;
     private AccountCreateOrLogInPage accountCreateOrLogInPage;
     private CreateAccountPage createAccountPage;
@@ -27,25 +21,19 @@ public class CreateAccountTests {
 
 
     @BeforeMethod
-    public void configure() {
-        WebDriverManager.chromedriver().setup();
-        webDriver = new ChromeDriver();
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
-        homePage = new HomePage(webDriver);
-        accountCreateOrLogInPage = new AccountCreateOrLogInPage(webDriver);
-        createAccountPage = new CreateAccountPage(webDriver);
-        myAccountPage = new MyAccountPage(webDriver);
-        webDriver.get("http://automationpractice.com/index.php");
-        webDriver.manage().window().maximize();
-
+    public void pageSetup() {
+        homePage = new HomePage();
+        accountCreateOrLogInPage = new AccountCreateOrLogInPage();
+        createAccountPage = new CreateAccountPage();
+        myAccountPage = new MyAccountPage();
     }
 
     @AfterMethod
-    public void quitWebDriver() {
-        webDriver.quit();
+    public void pageCleanup() {
+        webDriver.manage().deleteAllCookies();
     }
 
-    @Test(dataProvider = "invalidEmailDataForCreateAccountEmailField", dataProviderClass = DataProviders.class)
+    @Test(priority = 10, dataProvider = "invalidEmailDataForCreateAccountEmailField", dataProviderClass = DataProviders.class)
     public void createAccountWithInvalidDataInCreateAccountEmailField_expectFailToStartCreatingAccount(String email) {
         homePage.clickSignInBtn();
         accountCreateOrLogInPage.setSignUpEmailField(email);
@@ -55,8 +43,8 @@ public class CreateAccountTests {
 
     }
 
-    @Test
-    public void signIntoAccountWithInvalidDataInEmailField_expectAuthenticationFail() {
+    @Test (priority = 20)
+    public void createAccountWithEmailAlreadyRegistered_expectFailToStartCreatingAccount() {
         homePage.clickSignInBtn();
         accountCreateOrLogInPage.setSignUpEmailField("t@t.com");
         accountCreateOrLogInPage.clickCreateAnAccountBtn();
@@ -65,7 +53,7 @@ public class CreateAccountTests {
 
     }
 
-    @Test(dataProvider = "validDataForAccountCreation", dataProviderClass = DataProviders.class)
+    @Test (priority = 30, dataProvider = "validDataForAccountCreation", dataProviderClass = DataProviders.class)
     public void createAccountWithValidData_expectCreatingValidAccount(String title) {
         homePage.clickSignInBtn();
         accountCreateOrLogInPage.setSignUpEmailField(Faker.instance().bothify("?????###@mail.de"));

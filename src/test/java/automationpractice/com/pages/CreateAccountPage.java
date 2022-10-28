@@ -1,6 +1,6 @@
 package automationpractice.com.pages;
 
-import org.openqa.selenium.WebDriver;
+import automationpractice.com.base.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -10,13 +10,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class CreateAccountPage {
+public class CreateAccountPage extends BaseTest {
 
-    private WebDriver webDriver;
-
-    public CreateAccountPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
-        PageFactory.initElements(this.webDriver, this);
+    public CreateAccountPage() {
+        PageFactory.initElements(webDriver, this);
     }
 
     @FindBy(className = "account_creation")

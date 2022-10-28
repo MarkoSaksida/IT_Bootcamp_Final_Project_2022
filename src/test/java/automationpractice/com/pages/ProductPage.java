@@ -1,6 +1,6 @@
 package automationpractice.com.pages;
 
-import org.openqa.selenium.WebDriver;
+import automationpractice.com.base.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
@@ -11,14 +11,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class ProductPage {
+public class ProductPage extends BaseTest {
 
-    public ProductPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
-        PageFactory.initElements(this.webDriver, this);
+    public ProductPage() {
+        PageFactory.initElements(webDriver, this);
     }
 
-    private WebDriver webDriver;
 
     @FindBy(id = "quantity_wanted")
     private WebElement selectQuantityField;

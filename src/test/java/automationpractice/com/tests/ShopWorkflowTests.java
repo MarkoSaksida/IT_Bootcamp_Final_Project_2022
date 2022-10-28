@@ -1,21 +1,14 @@
 package automationpractice.com.tests;
 
+import automationpractice.com.base.BaseTest;
 import automationpractice.com.helpers.DataProviders;
 import automationpractice.com.pages.*;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+public class ShopWorkflowTests extends BaseTest {
 
-import java.time.Duration;
-
-public class ShopWorkflowTests {
-
-
-    private WebDriver webDriver;
     private HomePage homePage;
     private AccountCreateOrLogInPage accountCreateOrLogInPage;
     private TShirtsPage tShirtsPage;
@@ -26,26 +19,20 @@ public class ShopWorkflowTests {
 
     @BeforeMethod
     public void configure() {
-        WebDriverManager.chromedriver().setup();
-        webDriver = new ChromeDriver();
-        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
-        homePage = new HomePage(webDriver);
-        accountCreateOrLogInPage = new AccountCreateOrLogInPage(webDriver);
-        tShirtsPage = new TShirtsPage(webDriver);
-        productPage = new ProductPage(webDriver);
-        cart = new Cart(webDriver);
-        searchResultsPage = new SearchResultsPage(webDriver);
-        webDriver.get("http://automationpractice.com/index.php");
-        webDriver.manage().window().maximize();
-
+        homePage = new HomePage();
+        accountCreateOrLogInPage = new AccountCreateOrLogInPage();
+        tShirtsPage = new TShirtsPage();
+        productPage = new ProductPage();
+        cart = new Cart();
+        searchResultsPage = new SearchResultsPage();
     }
 
-//    @AfterMethod
-//    public void quitWebDriver() {
-//        webDriver.quit();
-//    }
+    @AfterMethod
+    public void pageCleanup() {
+        webDriver.manage().deleteAllCookies();
+    }
 
-    @Test
+    @Test (priority = 10)
     public void searchForClothingItem_expectedReturnSearchResults() {
         homePage.setSearchQueryField("t-shirt");
         homePage.clickSearchQueryBtn();
@@ -54,7 +41,7 @@ public class ShopWorkflowTests {
 
     }
 
-    @Test
+    @Test (priority = 20)
     public void addOrangeAndBlueTShirtToShoppingCartAndContinueShopping_expectedShoppingContinuesItemsAddedToShoppingCart() {
         homePage.clickTShirtsBtn();
         Assert.assertEquals(webDriver.getTitle(), "T-shirts - My Store", "error");
@@ -77,7 +64,7 @@ public class ShopWorkflowTests {
 
     }
 
-    @Test
+    @Test (priority = 30)
     public void addOrangeTShirtToShoppingCartAndRemoveIt_expectedShoppingCartEmpty() {
         homePage.clickTShirtsBtn();
         Assert.assertEquals(webDriver.getTitle(), "T-shirts - My Store");
@@ -93,7 +80,7 @@ public class ShopWorkflowTests {
         Assert.assertEquals(cart.getShoppingCartIsEmptyAlert(), "Your shopping cart is empty.");
     }
 
-    @Test(dataProvider = "paymentMethod", dataProviderClass = DataProviders.class)
+    @Test(priority = 40, dataProvider = "paymentMethod", dataProviderClass = DataProviders.class)
     public void shopForOrangeTShirt_expectedSuccessfulCheckout(String paymentMethod) {
         homePage.clickSignInBtn();
         accountCreateOrLogInPage.setSignInEmailAddressField("tester@tester.rs");

@@ -1,18 +1,15 @@
 package automationpractice.com.pages;
 
-import org.openqa.selenium.WebDriver;
+import automationpractice.com.base.BaseTest;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
-public class ForgotYourPasswordPage {
+public class ForgotYourPasswordPage extends BaseTest {
 
-    public WebDriver webDriver;
-
-    public ForgotYourPasswordPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
-        PageFactory.initElements(this.webDriver, this);
+    public ForgotYourPasswordPage() {
+        PageFactory.initElements(webDriver, this);
     }
 
     @FindBy(id = "email")

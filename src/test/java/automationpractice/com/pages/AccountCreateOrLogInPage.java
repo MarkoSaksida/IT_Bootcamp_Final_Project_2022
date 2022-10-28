@@ -1,7 +1,7 @@
 package automationpractice.com.pages;
 
+import automationpractice.com.base.BaseTest;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
@@ -11,14 +11,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class AccountCreateOrLogInPage {
-
-
-    private WebDriver webDriver;
-
-    public AccountCreateOrLogInPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
-        PageFactory.initElements(this.webDriver, this);
+public class AccountCreateOrLogInPage extends BaseTest {
+    public AccountCreateOrLogInPage() {
+        PageFactory.initElements(webDriver, this);
     }
 
     @FindBy(id = "email_create")

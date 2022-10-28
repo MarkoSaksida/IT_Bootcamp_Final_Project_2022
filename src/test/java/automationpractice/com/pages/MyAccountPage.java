@@ -1,7 +1,7 @@
 package automationpractice.com.pages;
 
+import automationpractice.com.base.BaseTest;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -10,13 +10,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class MyAccountPage {
+public class MyAccountPage extends BaseTest {
 
-    private WebDriver webDriver;
-
-    public MyAccountPage(WebDriver webDriver) {
-        this.webDriver = webDriver;
-        PageFactory.initElements(this.webDriver, this);
+    public MyAccountPage() {
+        PageFactory.initElements(webDriver, this);
     }
 
     public String getSuccessfulSignupAlert() {
