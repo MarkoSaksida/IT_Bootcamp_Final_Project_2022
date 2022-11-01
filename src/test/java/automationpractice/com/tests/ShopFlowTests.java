@@ -16,6 +16,8 @@ public class ShopFlowTests extends BaseTest {
     private Cart cart;
     private SearchResultsPage searchResultsPage;
 
+    private AccountPage accountPage;
+
 
     @BeforeMethod
     public void configure() {
@@ -25,6 +27,7 @@ public class ShopFlowTests extends BaseTest {
         productPage = new ProductPage();
         cart = new Cart();
         searchResultsPage = new SearchResultsPage();
+        accountPage = new AccountPage();
     }
 
     @AfterMethod
@@ -105,6 +108,7 @@ public class ShopFlowTests extends BaseTest {
         cart.clickPayBy(paymentMethod);
         cart.clickIConfirmMyOrder();
         Assert.assertEquals(webDriver.getTitle(), "Order confirmation - My Store");
+        accountPage.clickSignOutButton();
     }
 
 }

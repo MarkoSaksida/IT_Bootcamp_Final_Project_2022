@@ -5,7 +5,7 @@ import automationpractice.com.helpers.DataProviders;
 import automationpractice.com.pages.AccountCreateOrLogInPage;
 import automationpractice.com.pages.ForgotYourPasswordPage;
 import automationpractice.com.pages.HomePage;
-import automationpractice.com.pages.MyAccountPage;
+import automationpractice.com.pages.AccountPage;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -14,14 +14,14 @@ import org.testng.annotations.Test;
 public class LoginLogoutTests extends BaseTest {
     private HomePage homePage;
     private AccountCreateOrLogInPage accountCreateOrLogInPage;
-    private MyAccountPage myAccountPage;
+    private AccountPage accountPage;
     private ForgotYourPasswordPage forgotYourPasswordPage;
 
     @BeforeMethod
     public void configure() {
         homePage = new HomePage();
         accountCreateOrLogInPage = new AccountCreateOrLogInPage();
-        myAccountPage = new MyAccountPage();
+        accountPage = new AccountPage();
         forgotYourPasswordPage = new ForgotYourPasswordPage();
 
     }
@@ -72,7 +72,7 @@ public class LoginLogoutTests extends BaseTest {
         accountCreateOrLogInPage.setSignInPasswordField("test123456");
         accountCreateOrLogInPage.clickSignInButton();
         Assert.assertEquals(webDriver.getTitle(), "My account - My Store");
-        myAccountPage.clickSignOutButton();
+        accountPage.clickSignOutButton();
         Assert.assertEquals(webDriver.getTitle(), "Login - My Store");
     }
 

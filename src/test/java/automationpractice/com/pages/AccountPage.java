@@ -10,9 +10,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class MyAccountPage extends BaseTest {
+public class AccountPage extends BaseTest {
 
-    public MyAccountPage() {
+    public AccountPage() {
         PageFactory.initElements(webDriver, this);
     }
 

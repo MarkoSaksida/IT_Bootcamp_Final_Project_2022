@@ -5,7 +5,7 @@ import automationpractice.com.helpers.DataProviders;
 import automationpractice.com.pages.AccountCreateOrLogInPage;
 import automationpractice.com.pages.CreateAccountPage;
 import automationpractice.com.pages.HomePage;
-import automationpractice.com.pages.MyAccountPage;
+import automationpractice.com.pages.AccountPage;
 import com.github.javafaker.Faker;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -17,7 +17,7 @@ public class CreateAccountTests extends BaseTest {
     private HomePage homePage;
     private AccountCreateOrLogInPage accountCreateOrLogInPage;
     private CreateAccountPage createAccountPage;
-    private MyAccountPage myAccountPage;
+    private AccountPage accountPage;
 
 
     @BeforeMethod
@@ -25,7 +25,7 @@ public class CreateAccountTests extends BaseTest {
         homePage = new HomePage();
         accountCreateOrLogInPage = new AccountCreateOrLogInPage();
         createAccountPage = new CreateAccountPage();
-        myAccountPage = new MyAccountPage();
+        accountPage = new AccountPage();
     }
 
     @AfterMethod
@@ -80,7 +80,7 @@ public class CreateAccountTests extends BaseTest {
         createAccountPage.setMobilePhoneField("123-456-789");
         createAccountPage.setAddressAliasField("home");
         createAccountPage.clickRegisterButton();
-        Assert.assertEquals(myAccountPage.getSuccessfulSignupAlert(), "Welcome to your account. Here you can manage all of your personal information and orders.");
+        Assert.assertEquals(accountPage.getSuccessfulSignupAlert(), "Welcome to your account. Here you can manage all of your personal information and orders.");
     }
 
 }
