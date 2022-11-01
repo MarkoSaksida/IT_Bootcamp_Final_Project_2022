@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-public class ShopWorkflowTests extends BaseTest {
+public class ShopFlowTests extends BaseTest {
 
     private HomePage homePage;
     private AccountCreateOrLogInPage accountCreateOrLogInPage;

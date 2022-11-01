@@ -20,7 +20,7 @@
                     <include name="retrieveForgottenPassword_expectSuccessfullySentConfirmationEmail" />
                 </methods>
             </class>
-            <class name="automationpractice.com.tests.ShopWorkflowTests">
+            <class name="automationpractice.com.tests.ShopFlowTests">
                 <methods>
                     <include name="searchForClothingItem_expectedReturnSearchResults" />
                     <include name="addOrangeAndBlueTShirtToShoppingCartAndContinueShopping_expectedShoppingContinuesItemsAddedToShoppingCart" />
