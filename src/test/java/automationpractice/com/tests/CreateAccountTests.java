@@ -81,6 +81,7 @@ public class CreateAccountTests extends BaseTest {
         createAccountPage.setAddressAliasField("home");
         createAccountPage.clickRegisterButton();
         Assert.assertEquals(accountPage.getSuccessfulSignupAlert(), "Welcome to your account. Here you can manage all of your personal information and orders.");
+        accountPage.clickSignOutButton();
     }
 
 }
